@@ -1,0 +1,10 @@
+-   id: commitlint
+    name: commitlint
+    description: ''
+    entry: commitlint --edit
+    language: node
+    'types': [text]
+    args: []
+    require_serial: false
+    additional_dependencies: ["commitlint@4.2.0"]
+    minimum_pre_commit_version: '0'
