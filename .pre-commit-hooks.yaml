@@ -6,5 +6,5 @@
     'types': [text]
     args: []
     require_serial: false
-    additional_dependencies: ["commitlint@10.0.0"]
+    additional_dependencies: ["commitlint@11.0.0"]
     minimum_pre_commit_version: '0'
