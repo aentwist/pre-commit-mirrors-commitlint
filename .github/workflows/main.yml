@@ -16,7 +16,15 @@ jobs:
     - run: git config --global user.name 'Github Actions'
     - run: git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
     - run: pre-commit-mirror . --language=node --package-name=commitlint --types=text --entry='commitlint --edit' --id=commitlint
+    # pre-commit-mirror-maker has no support for multiple/additional hooks. Add
+    # additional hooks manually.
     - run: |
+        # If no version was released, then there is nothing to change
+        if [[ ! "$(git status -sb)" =~ "ahead" ]]; then exit 0; fi
+
+        latest_tag="$(git describe --tags --abbrev=0)"
+
+        # Add additional hooks
         cat <<END >> .pre-commit-hooks.yaml
         -   id: commitlint-all
             name: commitlint-all
@@ -26,9 +34,13 @@ jobs:
             'types': [text]
             args: []
             require_serial: false
-            additional_dependencies: ["commitlint@$(git describe --tags --abbrev=0 | cut -c2-)"]
+            additional_dependencies: ["commitlint@${latest_tag:1}"]
             minimum_pre_commit_version: '0'
         END
+
+        # Amend both the commit and tag with the additions
+        git commit --amend -a --no-edit
+        git tag -f $latest_tag
     - run: |
         git remote set-url origin https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY
         git push origin HEAD:refs/heads/main --tags
