@@ -31,15 +31,15 @@ repos:
 
 See [Configuring hooks to run at certain stages](https://pre-commit.com/#confining-hooks-to-run-at-certain-stages).
 
-Finally, when using plugins with `commitlint` you'll need to declare them under
-`additional_dependencies`. For example:
+Finally, when using plugins with commitlint you'll need to declare them under `additional_dependencies`. Since this overrides the `additional_dependencies` in this hook, you will also need to redeclare the `commitlint` dependency. For example:
 
 ```yaml
 - repo: https://github.com/aentwist/pre-commit-mirrors-commitlint
-  rev: ""  # Use the sha / tag you want to point at
+  rev: v18.2.0
   hooks:
     - id: commitlint
       additional_dependencies:
+        - commitlint@18.2.0
         - "@commitlint/config-conventional@18.1.0"
 ```
 
@@ -55,6 +55,7 @@ repos:
       - id: commitlint
         stages: [commit-msg]
         additional_dependencies:
+          - commitlint@18.2.0
           - "@commitlint/config-conventional@18.1.0"
 ```
 
