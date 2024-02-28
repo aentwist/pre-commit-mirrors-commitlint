@@ -6,5 +6,15 @@
     'types': [text]
     args: []
     require_serial: false
-    additional_dependencies: ["commitlint@19.0.0"]
+    additional_dependencies: ["commitlint@19.0.1"]
+    minimum_pre_commit_version: '0'
+-   id: commitlint-all
+    name: commitlint-all
+    description: ''
+    entry: commitlint --from --
+    language: node
+    'types': [text]
+    args: []
+    require_serial: false
+    additional_dependencies: ["commitlint@19.0.1"]
     minimum_pre_commit_version: '0'
