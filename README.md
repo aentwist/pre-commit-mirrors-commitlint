@@ -113,4 +113,6 @@ repos:
         additional_dependencies: *commitlint-additional-dependencies
 ```
 
-Run the hook manually with `pre-commit run --hook-stage=manual commitlint-all`.
+Run the hook manually with `pre-commit run --hook-stage=manual --files .pre-commit-config.yaml commitlint-all`.
+
+Note that we need to both specify the hook stage, and feed pre-commit some files so it knows it needs to run the hook. Using `--all-files` runs the hook once per file; instead, specify only one file to run the hook once. Choose the one file we know exists: the pre-commit config.
