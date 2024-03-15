@@ -15,7 +15,14 @@ jobs:
     - run: pip install pre-commit-mirror-maker
     - run: git config --global user.name 'Github Actions'
     - run: git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-    - run: pre-commit-mirror . --language=node --package-name=commitlint --types=text --entry='commitlint --edit' --id=commitlint
+    - run: >
+        pre-commit-mirror .
+        --id=commitlint
+        --package-name=commitlint
+        --description "runs commitlint on the message of the commit being made"
+        --entry='commitlint --edit'
+        --language=node
+        --types=text
     # pre-commit-mirror-maker has no support for multiple/additional hooks. Add
     # additional hooks manually.
     - run: |
@@ -28,7 +35,7 @@ jobs:
         cat <<END >> .pre-commit-hooks.yaml
         -   id: commitlint-all
             name: commitlint-all
-            description: ''
+            description: 'runs commitlint in CI on all commit messages'
             entry: commitlint --from --
             language: node
             'types': [text]
