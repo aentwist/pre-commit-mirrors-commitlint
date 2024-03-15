@@ -1,6 +1,6 @@
-# commitlint mirror
+# commitlint pre-commit hooks
 
-Mirror of [commitlint](https://github.com/conventional-changelog/commitlint) for [pre-commit](https://github.com/pre-commit/pre-commit)
+[pre-commit](https://github.com/pre-commit/pre-commit) hooks for [commitlint](https://github.com/conventional-changelog/commitlint)
 
 ## Using commitlint with pre-commit
 
