@@ -1,20 +1,20 @@
 -   id: commitlint
     name: commitlint
-    description: ''
+    description: 'runs commitlint on the message of the commit being made'
     entry: commitlint --edit
     language: node
     'types': [text]
     args: []
     require_serial: false
-    additional_dependencies: ["commitlint@19.2.0"]
+    additional_dependencies: ["commitlint@19.2.1"]
     minimum_pre_commit_version: '0'
 -   id: commitlint-all
     name: commitlint-all
-    description: ''
+    description: 'runs commitlint in CI on all commit messages'
     entry: commitlint --from --
     language: node
     'types': [text]
     args: []
     require_serial: false
-    additional_dependencies: ["commitlint@19.2.0"]
+    additional_dependencies: ["commitlint@19.2.1"]
     minimum_pre_commit_version: '0'
