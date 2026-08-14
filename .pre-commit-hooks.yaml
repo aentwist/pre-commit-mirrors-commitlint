@@ -1,12 +1,12 @@
 -   id: commitlint
-    name: commitlint
+    name: 'commitlint'
     description: 'runs commitlint on the message of the commit being made'
     entry: commitlint --edit
     language: node
     'types': [text]
     args: []
     require_serial: false
-    additional_dependencies: ["commitlint@21.2.1"]
+    additional_dependencies: ["commitlint@21.2.2"]
     minimum_pre_commit_version: '0'
 -   id: commitlint-all
     name: commitlint-all
@@ -16,5 +16,5 @@
     'types': [text]
     args: []
     require_serial: false
-    additional_dependencies: ["commitlint@21.2.1"]
+    additional_dependencies: ["commitlint@21.2.2"]
     minimum_pre_commit_version: '0'
